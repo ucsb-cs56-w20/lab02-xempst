@@ -24,8 +24,11 @@ public class HelloControllerTest {
 
     @Test
     public void getHello() throws Exception {
+        String html = "<h1>Hello World!</h1>\n" +
+        "<p>This web app is powered by \n" +
+        "<a href='https://github.com/ucsb-cs56-w20/lab02-xempst'>this github repo</a></p>\n";
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+                .andExpect(content().string(equalTo(html)));
     }
 }
